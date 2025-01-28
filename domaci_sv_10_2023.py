@@ -1,5 +1,15 @@
+"""
+
+    AUTHOR: VEDRAN BAJIC
+    DATE: MAY 2024
+
+"""
+
+
+
 # OVE TRI METODE ĆE BITI POZIVANE KROZ AUTOMATSKE TESTOVE. NEMOJTE MENJATI NAZIV, PARAMETRE I POVRATNU VREDNOST.
 # Dozvoljeno je implementirati dodatne, pomoćne metode, ali isključivo u okviru ovog modula.
+
 
 import tokenizer
 
@@ -245,12 +255,14 @@ def calculate_infix(expression):
     tokens = tokenizer.tokenize(expression)
     value_stack = Stack()
     operator_stack = Stack()
+
     previous_elem = '('
     for i in range(len(tokens)):
         if tokens[i] == '-' and previous_elem == '(':
             tokens[i] = '!'
         previous_elem = tokens[i]
     is_all_good(tokens)
+
     for token in tokens:
         if is_operand(token):  # broj
             value_stack.push(give_type(token))
@@ -273,9 +285,11 @@ def calculate_infix(expression):
                         raise StackError("Greska prilikom racunanja, previse operatora")
                     top_most2 = value_stack.pop()
                     value_stack.push(calculate(top_most2, top_most1, operation))
+
             if not naso:
                 raise BracketsError("Pogresna upotreba zagrada")
             # print_stack(operator_stack)
+
         elif is_operator(token):
             if operator_stack.is_empty():
                 operator_stack.push(token)

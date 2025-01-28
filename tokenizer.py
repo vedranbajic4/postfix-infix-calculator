@@ -1,3 +1,10 @@
+"""
+
+    THIS CODE IS PROVIDED BY TEACHING ASSISTANT
+
+"""
+
+
 """Modul omogućava parsiranje aritmetičkih izraza."""
 import re
 
